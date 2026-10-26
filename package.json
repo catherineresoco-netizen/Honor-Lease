@@ -1,0 +1,9 @@
+{
+  "name": "honor-flex-frontloaded-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "Fictional marketplace Honor Flex API demo"
+}
