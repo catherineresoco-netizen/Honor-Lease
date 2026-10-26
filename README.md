@@ -20,3 +20,13 @@ Eight fictional Oakland-area rental listings, modern marketplace interface, land
 All eight fictional properties and landlord-funded rent specials are retained. Changes persist in localStorage; use **Reset demo data** to restore the initial demonstration.
 
 All payments are calculated in integer cents to avoid rounding discrepancies. Custom installment amounts must add up to the unpaid deposit exactly. This demo does not collect money, guarantee deposits, underwrite renters, or connect to Zillow or another production system. Terms need landlord approval and legal review. Photos and fonts may require internet.
+
+## Business Acumen and Revenue Lab (new)
+- **Business acumen** explains who uses, benefits, pays and funds Honor Flex, the API integration model, partner needs, competitive positioning, risks and pilot roadmap.
+- **Revenue lab** models hypothetical negotiated licensing fees, optional usage fees, optional one-time onboarding revenue, monthly operating expenses and recurring break-even coverage. Edit inputs live. All numbers are examples, not actual prices or revenue.
+- Both screens run locally in the browser, with no account or backend. Existing landlord changes, 8 rentals, payment schemes, and rent concessions remain intact.
+
+
+## Veteran Housing Assistance page
+
+A separate, optional informational resource page lists Alameda County veteran housing assistance contacts, including VA-funded SSVF grantees/nonprofits, housing navigation, and the VA homeless veterans hotline. Filters help locate possible rent/deposit help, eviction prevention, housing services, and referrals. Each listing has provider contact information and a direct source link. Assistance, eligibility, grant funding, and intake processes are not guaranteed. The directory does not solicit or save applicants' personal or veteran data. Last checked October 2026. It is a public-service guide, not a revenue product or an assertion of nonprofit partnerships.
