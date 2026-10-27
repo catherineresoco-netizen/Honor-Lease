@@ -1,20 +1,17 @@
-# Honor Flex — Premium Marketplace + Case Competition Impact
+# Honor Flex — Cinematic Impact & Business Story
 
-Editable VS Code web app with eight fictional Alameda County rental listings, landlord-controlled equal/custom deposit schedules, first-month rent concessions, renter cost disclosures, simulated API JSON, Business Acumen, Revenue Lab, and a new **Impact & Pilot** page. No veteran-only content remains.
+This version merges **Impact & Pilot** and **Business Acumen** into one vertically scrolling, Apple-inspired storytelling page: **Impact & Business**. It features subtle reveal-on-scroll movement, full-bleed opening and closing chapters, an interactive affordability simulator, research statistics and sources, the business model, pilot roadmap, and clear limitations.
 
-## Run
-1. Extract the ZIP; open `Honor_Flex_Competition_Impact_VSCode` in VS Code.
-2. Run `node server.js` in the VS Code terminal. No npm install required.
-3. Visit http://localhost:3000. You may also open `index.html` directly.
+The other pages remain: Explore Homes (8 fictional properties), Property Manager (equal and custom deposit installments + rent concessions), Developer View (illustrative JSON), and Revenue Lab (hypothetical negotiated-contract scenarios).
 
-## For the Google case competition
-- **Explore homes:** show offers embedded into an established-marketplace-style listing.
-- **Property manager:** change deposit due at move-in, select equal/custom monthly payments, or advertise a landlord-funded first-month rent credit; publish to the simulated marketplace.
-- **Impact & pilot:** use editable figures to quantify upfront cash due vs. deferred deposit and genuine rent-credit savings; inspect every subsequent payment and remaining deposit balance. Review research evidence and a four-step proposed pilot scorecard.
-- **Business acumen:** explain who pays, contracts, competitive alternatives, and risk allocation.
-- **Revenue lab:** adjust hypothetical, negotiated partner economics and operating cost assumptions (not fixed pricing).
-- **Developer view:** inspect an illustrative payload (not a live API).
+## Run locally
 
-All properties are fictional. No Zillow affiliation, live integration, completed pilot, payment processing, deposit guarantees, or legal approval is implied. National research is cited as evidence of a broad problem, not proof of product demand. All modeled financial numbers are illustrative; verify third-party data before final submission.
+1. Open this folder in VS Code.
+2. Open Terminal and run `node server.js`.
+3. Open http://localhost:3000.
+4. Choose **Impact & Business** and scroll.
 
-Browser saves landlord policy changes locally; they do not synchronize with teammates on other devices.
+No npm installation required. Browser-local policies are not shared across users.
+
+## Note
+All properties, integrations, financial scenarios, and impact projections are illustrative. No actual Zillow partnership or live API integration is claimed. Reduced-motion system settings turn off scrolling animations.
