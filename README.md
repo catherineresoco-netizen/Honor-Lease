@@ -1,32 +1,20 @@
-# Honor Flex — Premium Marketplace + Two Deposit Payment Schemes
+# Honor Flex — Premium Marketplace + Case Competition Impact
 
-Eight fictional Oakland-area rental listings, modern marketplace interface, landlord-funded first-month rent concessions, and an editable Honor Flex deposit policy. **Not affiliated with Zillow or any live marketplace.**
+Editable VS Code web app with eight fictional Alameda County rental listings, landlord-controlled equal/custom deposit schedules, first-month rent concessions, renter cost disclosures, simulated API JSON, Business Acumen, Revenue Lab, and a new **Impact & Pilot** page. No veteran-only content remains.
 
-## Run in VS Code
-1. Extract this ZIP, then open the `Honor_Flex_Payment_Schemes_VSCode` folder with **File → Open Folder**.
-2. Open the VS Code terminal and run `node server.js`.
-3. Open http://localhost:3000 in a browser. No `npm install` needed. Alternatively, open `index.html` directly.
+## Run
+1. Extract the ZIP; open `Honor_Flex_Competition_Impact_VSCode` in VS Code.
+2. Run `node server.js` in the VS Code terminal. No npm install required.
+3. Visit http://localhost:3000. You may also open `index.html` directly.
 
-## Try the new landlord flow
-1. Choose **Property manager** and select **Lake Merritt Residence**.
-2. Set **Full security deposit** to $1,800 and **Deposit due at move-in** to $720 (40%).
-3. Select either:
-   - **Equal payments over time** — divide remaining $1,080 evenly over 3 months ($360 monthly); or
-   - **Custom monthly payments** — set, for example, Month 2 = $500, Month 3 = $350, Month 4 = $230 (total $1,080).
-4. The live preview shows every payment, remaining deposit balance, first-month rent credit, and estimated cash due at move-in. Invalid custom totals cannot be published.
-5. Click **Publish to renter listing**, return to **Explore homes**, open the property, and verify the detailed timeline matches.
-6. Open **Developer view** for a simulated JSON payload describing the selected payment scheme.
+## For the Google case competition
+- **Explore homes:** show offers embedded into an established-marketplace-style listing.
+- **Property manager:** change deposit due at move-in, select equal/custom monthly payments, or advertise a landlord-funded first-month rent credit; publish to the simulated marketplace.
+- **Impact & pilot:** use editable figures to quantify upfront cash due vs. deferred deposit and genuine rent-credit savings; inspect every subsequent payment and remaining deposit balance. Review research evidence and a four-step proposed pilot scorecard.
+- **Business acumen:** explain who pays, contracts, competitive alternatives, and risk allocation.
+- **Revenue lab:** adjust hypothetical, negotiated partner economics and operating cost assumptions (not fixed pricing).
+- **Developer view:** inspect an illustrative payload (not a live API).
 
-All eight fictional properties and landlord-funded rent specials are retained. Changes persist in localStorage; use **Reset demo data** to restore the initial demonstration.
+All properties are fictional. No Zillow affiliation, live integration, completed pilot, payment processing, deposit guarantees, or legal approval is implied. National research is cited as evidence of a broad problem, not proof of product demand. All modeled financial numbers are illustrative; verify third-party data before final submission.
 
-All payments are calculated in integer cents to avoid rounding discrepancies. Custom installment amounts must add up to the unpaid deposit exactly. This demo does not collect money, guarantee deposits, underwrite renters, or connect to Zillow or another production system. Terms need landlord approval and legal review. Photos and fonts may require internet.
-
-## Business Acumen and Revenue Lab (new)
-- **Business acumen** explains who uses, benefits, pays and funds Honor Flex, the API integration model, partner needs, competitive positioning, risks and pilot roadmap.
-- **Revenue lab** models hypothetical negotiated licensing fees, optional usage fees, optional one-time onboarding revenue, monthly operating expenses and recurring break-even coverage. Edit inputs live. All numbers are examples, not actual prices or revenue.
-- Both screens run locally in the browser, with no account or backend. Existing landlord changes, 8 rentals, payment schemes, and rent concessions remain intact.
-
-
-## Veteran Housing Assistance page
-
-A separate, optional informational resource page lists Alameda County veteran housing assistance contacts, including VA-funded SSVF grantees/nonprofits, housing navigation, and the VA homeless veterans hotline. Filters help locate possible rent/deposit help, eviction prevention, housing services, and referrals. Each listing has provider contact information and a direct source link. Assistance, eligibility, grant funding, and intake processes are not guaranteed. The directory does not solicit or save applicants' personal or veteran data. Last checked October 2026. It is a public-service guide, not a revenue product or an assertion of nonprofit partnerships.
+Browser saves landlord policy changes locally; they do not synchronize with teammates on other devices.
