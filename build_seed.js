@@ -1,0 +1,1 @@
+const fs=require('fs');const html=fs.readFileSync(__dirname+'/index.html','utf8');const raw=html.split('const defaults=')[1].split(';const clone=')[0];const items=Function('return ('+raw+')')();fs.writeFileSync(__dirname+'/seed-properties.json',JSON.stringify(items,null,2));console.log(items.length);

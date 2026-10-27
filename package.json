@@ -1,9 +1,1 @@
-{
-  "name": "honor-flex-frontloaded-demo",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node server.js"
-  },
-  "description": "Fictional marketplace Honor Flex API demo"
-}
+{"name":"honor-flex-real-api-demo","version":"1.0.0","private":true,"description":"Local SQLite-backed Honor Flex API with marketplace integration","scripts":{"start":"node server.js","test":"node test-api.js"},"engines":{"node":">=22.13.0"}}
