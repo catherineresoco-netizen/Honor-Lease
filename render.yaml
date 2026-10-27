@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: honor-flex-api-demo
+    runtime: node
+    plan: 0.5c-512mb
+    branch: real-api-demo
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24.11.1
+      - key: DATABASE_PATH
+        value: /var/data/honor-flex-demo.sqlite
+      - key: PUBLIC_ORIGIN
+        value: https://catherineresoco-netizen.github.io
+      - key: HONOR_ADMIN_PASSWORD
+        sync: false
+    disk:
+      name: honor-flex-demo-data
+      mountPath: /var/data
+      sizeGB: 1

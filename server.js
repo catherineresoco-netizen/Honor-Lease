@@ -2,11 +2,20 @@
 const http=require('node:http');
 const fs=require('node:fs');
 const path=require('node:path');
+const crypto=require('node:crypto');
 const {DatabaseSync}=require('node:sqlite');
 const PORT=Number(process.env.PORT||3000);
 // Intentionally local-only: this student demo has no production identity service.
-const HOST='127.0.0.1';
-const db=new DatabaseSync(path.join(__dirname,'honor-flex-demo.sqlite'));
+const HOST=process.env.HOST || '0.0.0.0';
+const ADMIN_PASSWORD=process.env.HONOR_ADMIN_PASSWORD;
+const PUBLIC_ORIGIN=process.env.PUBLIC_ORIGIN || 'https://catherineresoco-netizen.github.io';
+if(!ADMIN_PASSWORD || ADMIN_PASSWORD.length<14){console.error('Set HONOR_ADMIN_PASSWORD to a long secret (14+ characters) before running the hosted API.');process.exit(1);}
+const allowedOrigins=new Set([PUBLIC_ORIGIN]);
+function isAdmin(req){const auth=req.headers.authorization||'';const expected='Basic '+Buffer.from('honor-admin:'+ADMIN_PASSWORD).toString('base64');const a=Buffer.from(auth),b=Buffer.from(expected);return a.length===b.length&&crypto.timingSafeEqual(a,b);}
+function cors(req,res){const origin=req.headers.origin;if(origin&&allowedOrigins.has(origin)){res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');res.setHeader('Access-Control-Allow-Headers','Authorization,Content-Type');res.setHeader('Access-Control-Allow-Methods','GET,PUT,POST,OPTIONS');}return !origin||allowedOrigins.has(origin);}
+const DB_PATH=process.env.DATABASE_PATH || path.join(__dirname,'honor-flex-demo.sqlite');
+fs.mkdirSync(path.dirname(DB_PATH),{recursive:true});
+const db=new DatabaseSync(DB_PATH);
 db.exec('CREATE TABLE IF NOT EXISTS properties (id TEXT PRIMARY KEY, payload TEXT NOT NULL, updated_at TEXT NOT NULL)');
 const seed=JSON.parse(fs.readFileSync(path.join(__dirname,'seed-properties.json'),'utf8'));
 const getOne=db.prepare('SELECT payload FROM properties WHERE id = ?');
@@ -14,7 +23,7 @@ const getAll=db.prepare('SELECT payload FROM properties ORDER BY rowid');
 const insert=db.prepare('INSERT INTO properties (id, payload, updated_at) VALUES (?,?,?)');
 const update=db.prepare('UPDATE properties SET payload=?, updated_at=? WHERE id=?');
 for(const p of seed){if(!getOne.get(p.id))insert.run(p.id,JSON.stringify(p),new Date().toISOString());}
-const json=(res,status,obj)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','Access-Control-Allow-Origin':'http://127.0.0.1:'+PORT});res.end(JSON.stringify(obj));};
+const json=(res,status,obj)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(obj));};
 const cents=x=>Math.round(Number(x)*100);
 function policy(p){
   const d=cents(p.deposit),m=p.enabled?cents(p.moveInDeposit??Math.round(p.deposit*(p.initialPercent??40))/100):d;
@@ -40,8 +49,11 @@ function validate(body,old){
 }
 const frontend=path.join(__dirname,'index.html');
 const server=http.createServer((req,res)=>{
+  if(!cors(req,res))return json(res,403,{error:'Origin not permitted'});
+  if(req.method==='OPTIONS'){res.writeHead(204);return res.end();}
   const url=new URL(req.url,'http://localhost');const route=url.pathname;
-  if(route==='/api/health'&&req.method==='GET')return json(res,200,{status:'ok',storage:'sqlite',mode:'local-demo',properties:getAll.all().length});
+  if((req.method==='PUT'||req.method==='POST')&&!isAdmin(req)){res.setHeader('WWW-Authenticate','Basic realm=Honor Flex Demo');return json(res,401,{error:'Administrator credentials required'});}
+  if(route==='/api/health'&&req.method==='GET')return json(res,200,{status:'ok',storage:'sqlite',mode:'hosted-demo',properties:getAll.all().length});
   if(route==='/api/properties'&&req.method==='GET')return json(res,200,getAll.all().map(x=>JSON.parse(x.payload)));
   const match=route.match(/^\/api\/properties\/([a-z0-9-]+)(?:\/(policy|schedule))?$/);
   if(match){const id=match[1],part=match[2];const row=getOne.get(id);if(!row)return json(res,404,{error:'Property not found'});const old=JSON.parse(row.payload);
@@ -57,4 +69,4 @@ const server=http.createServer((req,res)=>{
   if(req.method!=='GET'||!(route==='/'||route==='/index.html'))return json(res,404,{error:'Not found'});
   fs.readFile(frontend,(err,data)=>{if(err)return json(res,500,{error:'Frontend not found'});res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});res.end(data)});
 });
-server.listen(PORT,HOST,()=>console.log(`Honor Flex REAL API demo at http://${HOST}:${PORT} (local-only; SQLite storage)`));
+server.listen(PORT,HOST,()=>console.log(`Honor Flex REAL API demo at http://${HOST}:${PORT} (hosted-capable; SQLite storage)`));
