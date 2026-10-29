@@ -47,3 +47,83 @@
 .pitch-config-right .pitch-payment-row b,.pitch-config-total strong{color:#124F35;}.pitch-propertyrow strong span{color:#3D624E;}.pitch-cost-before small{color:#1F573C;}.pitch-cost-after small{color:#D5F6E1;}
 .pitch-scene.active .pitch-in{backface-visibility:hidden;}
 .pitch-scene:focus-visible,.pitch-fullscreen:focus-visible,.pitch-btns button:focus-visible,.pitch-scheme:focus-visible,.pitch-closing-actions button:focus-visible{outline:3px solid #F4D98F;outline-offset:3px;}
+
+/* V3: explicit per-scene contrast. The opening scene has a light canvas,
+   so it must NEVER inherit text intended for dark scenes. */
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] {
+  background: #F7F8F3 !important;
+  color: #102B21 !important;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-kicker,
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-scrollhint,
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-scrollhint span {
+  color: #17563D !important;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-display {
+  color: #102B21 !important;
+  max-width: 950px;
+  font-size: clamp(45px, 5.2vw, 78px);
+  line-height: 1.11;
+  letter-spacing: -0.055em;
+  position: relative;
+  z-index: 3;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-display em {
+  color: #176347 !important;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-lede,
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-lede strong {
+  color: #274C3C !important;
+  opacity: 1;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-orb-a {
+  opacity: .45;
+  right: -230px;
+  z-index: 0;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-orb-b {
+  opacity: .30;
+  z-index: 0;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-kicker,
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-lede,
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-scrollhint {
+  position: relative;
+  z-index: 3;
+}
+/* Maintain distinction between dark and light scenes. */
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="7"] .pitch-display,
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="7"] .pitch-lede {
+  color: #FFFFFF !important;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="7"] .pitch-display em {
+  color: #C5F2D7 !important;
+}
+#pitch .pitch-stage .pitch-scene[data-pitch-scene="7"] .pitch-lede strong {
+  color: #FFFFFF !important;
+}
+/* Balanced fluid sizing for narrow screens without clipping. */
+@media (max-width: 900px) {
+  #pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-display {
+    font-size: clamp(37px, 6.1vw, 57px);
+    max-width: 95%;
+    letter-spacing: -0.045em;
+  }
+  #pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-lede {
+    max-width: 78%;
+  }
+}
+@media (max-width: 600px) {
+  #pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-display {
+    font-size: clamp(31px, 8vw, 46px);
+    max-width: 100%;
+  }
+  #pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-lede {
+    max-width: 100%;
+    font-size: 15px;
+  }
+  #pitch .pitch-stage .pitch-scene[data-pitch-scene="0"] .pitch-orb-a {
+    right: -350px;
+    opacity: .22;
+  }
+}
