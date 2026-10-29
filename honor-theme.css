@@ -1,0 +1,168 @@
+
+/* Honor Flex | Midnight Navy × Emerald Aqua • 2026-10-29
+   Global theme for the full web app and the animated pitch.
+   Final stylesheet deliberately placed after legacy inline CSS and pitch CSS.
+   Text colors are assigned by scene, NEVER with inherited pale-on-light rules. */
+:root {
+  --ink:#102A43;--muted:#405A6F;--green:#147D69;--darkgreen:#103535;
+  --mint:#D9F5F7;--sand:#F6FAFB;--line:#D7E5EA;
+  --shadow:0 14px 36px rgba(16,42,67,.09);
+  --hf-night:#081A1A;--hf-navy:#102A43;--hf-emerald:#1FA971;
+  --hf-aqua:#2CB1BC;--hf-white:#FFFFFF;--hf-ice:#F3FFFA;--hf-mint:#C9F2DE;
+  --hf-text:#162D40;--hf-sub:#405A6F;--hf-outline:#CADFE6;
+}
+html {scroll-behavior:smooth;}
+body {background:#F7FBFD;color:var(--hf-text);}
+.top {background:rgba(255,255,255,.97);border-bottom:1px solid var(--hf-outline);box-shadow:0 3px 24px rgba(16,42,67,.045);}
+.brand {color:var(--hf-navy);}
+.brand span:last-child {color:#087D82;}
+.brandmark {background:linear-gradient(140deg,var(--hf-navy),#087E85);color:#FFF;}
+.nav {color:#36546A;}
+.nav:hover {color:var(--hf-navy);background:#EAF7F8;}
+.nav.active {background:#DAF3F4;color:#0B4D60;}
+.headright .pillnote {background:#E8FAF7;color:#11634C;border-color:#BDE9DB;}
+.outline,.filter {background:#FFFFFF;border-color:#BBD4DC;color:#1B5260;}
+.primary {background:linear-gradient(110deg,#0D5774,#087D83);color:#FFFFFF;box-shadow:0 8px 22px rgba(10,97,122,.18);}
+.primary:hover {background:linear-gradient(110deg,#0B4664,#086771);}
+.hero {background:linear-gradient(125deg,#FFFFFF 2%,#EEF9FC 57%,#E5F8F3 100%);border-color:#D6E9ED;}
+.hero h1,.sectionh h1,.panel h3,.list-head h2,.detailhead h2,.detailbox h3 {color:var(--hf-navy);}
+.hero p,.sectionh p,.panel p,.small,.home-address,.footnote {color:#466176;}
+.tag-hero {background:#D8F1EF;color:#11675C;}
+.search,.field input,.field select {border-color:#BCD7DC;background:#FFFFFF;color:var(--hf-text);}
+.filter.selected {background:#116C7D;border-color:#116C7D;color:#FFFFFF;}
+.home,.panel,.detailbox,.metric,.modal {border-color:#D8E7EB;background:#FFFFFF;box-shadow:0 12px 38px rgba(16,42,67,.065);}
+.price,.metricval,.home-title,.detailhead h2 {color:var(--hf-navy);}
+.flex-chip {background:#E2F7F2;border-color:#AFE0D5;color:#075E53;}
+.chiptitle,.chiptitle span,.saving {color:#076757;}
+.flex-chip p {color:#27574F;}
+.normal-chip {background:#F0F5F7;color:#426074;}
+.map {background:#E6F4F7;border-left-color:#CDE1E7;}
+.pin {color:#164A67;}
+.pin:hover {background:#0F7281;color:white;}
+.workspace {background:linear-gradient(145deg,#F4FAFC,#F8FCFB);}
+.eyebrow {color:#087383;}
+.toggleline,.metric.green {background:#E3F6F3;color:#0C6656;}
+.metriclabel,.field label {color:#4A6576;}
+.metric.green .metricval {color:#086F5D;}
+.code {background:#0A2230;color:#BDEFE8;}
+.success {color:#086D55;}
+/* Sections & features supplied by the app itself */
+#impact,#revenue,#api,#landlord,#rent {color:var(--hf-text);}
+#impact a,#revenue a {color:#076D80;}
+.story-screen {background:#F7FBFC;}
+.story-screen .eyebrow,.biz-eyebrow {color:#087788;}
+#impact .story-dark,#impact .impact-dark {color:#FFFFFF;}
+#impact .story-dark p,#impact .impact-dark p {color:#DCF4F3;}
+#revenue .biz-positive {color:#086C57;}
+#revenue .biz-negative {color:#B33F35;}
+input:focus-visible,button:focus-visible,select:focus-visible,.nav:focus-visible {
+  outline:3px solid #DDAC4C;outline-offset:3px;
+}
+
+/* Pitch container */
+#pitch.screen.active {background:#F5FAFC;}
+#pitch .pitch-shell {--pi:var(--hf-navy);--pg:#087A85;--pm:#C9F2DE;--pr:#F5FAFC;color:var(--hf-navy);}
+#pitch .pitch-wordmark {color:var(--hf-navy);}
+#pitch .pitch-flower {background:linear-gradient(135deg,var(--hf-navy),var(--hf-aqua));}
+#pitch .pitch-small,#pitch .pitch-demo-pill,#pitch .pitch-scene-label,#pitch .pitch-hint {color:#3C5C6F;}
+#pitch .pitch-fullscreen {color:var(--hf-navy);border-color:#A9C7D1;background:#FFFFFF;}
+#pitch .pitch-nav {color:#075A6F!important;background:#DDF6F5!important;border:1px solid #A4D9DC!important;}
+#pitch .pitch-stage {background:var(--hf-night);color:#FFFFFF;box-shadow:0 24px 65px rgba(6,36,52,.18);}
+#pitch .pitch-scene {--scene-ink:#102A43;--scene-sub:#35556C;--scene-accent:#077988;}
+/* Explicit appearance for every scene. Dark: 0, 5, 7. Light: 1,2,3,4,6. */
+#pitch .pitch-scene[data-pitch-scene="0"] {
+ background:radial-gradient(ellipse at 88% 18%,#155962 0%,#103535 34%,#081A1A 74%);
+ color:#FFFFFF;--scene-ink:#FFFFFF;--scene-sub:#D9F5F7;--scene-accent:#C9F2DE;
+}
+#pitch .pitch-scene[data-pitch-scene="1"] {
+ background:linear-gradient(132deg,#FFFFFF,#F0F9FC);color:#102A43;
+}
+#pitch .pitch-scene[data-pitch-scene="2"] {
+ background:linear-gradient(135deg,#E8F8F6,#F6FAFD 70%,#FFFFFF);color:#102A43;
+}
+#pitch .pitch-scene[data-pitch-scene="3"] {
+ background:linear-gradient(135deg,#FFFFFF,#F3FAFC);color:#102A43;
+}
+#pitch .pitch-scene[data-pitch-scene="4"] {
+ background:linear-gradient(135deg,#F0FAFC,#FFFFFF);color:#102A43;
+}
+#pitch .pitch-scene[data-pitch-scene="5"] {
+ background:linear-gradient(125deg,#081A1A,#103535 63%,#12645B);color:#FFFFFF;
+ --scene-ink:#FFFFFF;--scene-sub:#D9F5F7;--scene-accent:#C9F2DE;
+}
+#pitch .pitch-scene[data-pitch-scene="6"] {
+ background:linear-gradient(140deg,#FFFFFF,#F0F9FC);color:#102A43;
+}
+#pitch .pitch-scene[data-pitch-scene="7"] {
+ background:radial-gradient(ellipse at 84% 45%,#177C7C 0%,#103535 44%,#081A1A 82%);
+ color:#FFFFFF;--scene-ink:#FFFFFF;--scene-sub:#D9F5F7;--scene-accent:#C9F2DE;
+}
+#pitch .pitch-scene .pitch-display,#pitch .pitch-scene .pitch-head {color:var(--scene-ink);}
+#pitch .pitch-scene .pitch-display em,#pitch .pitch-scene .pitch-head em {color:var(--scene-accent);}
+#pitch .pitch-scene .pitch-kicker {color:var(--scene-accent);}
+#pitch .pitch-scene .pitch-lede,#pitch .pitch-scene .pitch-lede strong,
+#pitch .pitch-scene .pitch-scrollhint,#pitch .pitch-scene .pitch-team {color:var(--scene-sub);}
+#pitch .pitch-scene[data-pitch-scene="0"] .pitch-display {font-size:clamp(48px,5.6vw,87px);max-width:990px;}
+#pitch .pitch-scene[data-pitch-scene="0"] .pitch-orb-a {
+ right:-10%;top:12%;opacity:.4;
+ background:radial-gradient(circle at 32% 33%,#27B4B0,#0D6372 52%,transparent 72%);
+}
+#pitch .pitch-scene[data-pitch-scene="0"] .pitch-orb-b {background:#2CB1BC55;}
+#pitch .pitch-scene[data-pitch-scene="7"] .pitch-orb-close {opacity:.25;background:radial-gradient(circle,#2CB1BC,#166B78 44%,transparent 70%);}
+/* Contrast on internal pitch cards / inputs */
+#pitch .pitch-stat {background:linear-gradient(125deg,#0E5268,#102A43);color:#FFFFFF;}
+#pitch .pitch-stat p {color:#FFFFFF;}
+#pitch .pitch-stat small {color:#D9F5F7;}
+#pitch .pitch-quote {background:#FFFFFF;border-color:#CDE3E8;}
+#pitch .pitch-quote p {color:#102A43;}
+#pitch .pitch-quote-mark {color:#12868B;}
+#pitch .pitch-quote div {color:#3C6273;}
+#pitch .pitch-cost {background:#FFFFFF;color:#102A43;border:1px solid #C9DDE4;}
+#pitch .pitch-cost small {color:#23536A;}
+#pitch .pitch-cost span {color:#3F6073;}
+#pitch .pitch-cost-after {background:linear-gradient(135deg,#103535,#0F7480);color:#FFFFFF;border-color:#0F7480;}
+#pitch .pitch-cost-after small,#pitch .pitch-cost-after span {color:#E0FCF9;}
+#pitch .pitch-transform {color:#0F7180;}
+#pitch .pitch-relief {background:#D7F2EF;border-color:#A8DBD7;color:#0B5060;}
+#pitch .pitch-relief p {color:#345E69;}
+#pitch .pitch-webwindow,#pitch .pitch-config-left,#pitch .pitch-config-right,#pitch .pitch-stake {background:#FFFFFF;color:#102A43;border-color:#CDE1E8;}
+#pitch .pitch-windowbar {background:#E9F5F8;color:#375D70;}
+#pitch .pitch-webbody,#pitch .pitch-webtop b,#pitch .pitch-propertyrow strong {color:#102A43;}
+#pitch .pitch-webtop span,#pitch .pitch-propertyrow p,#pitch .pitch-propertyrow small {color:#3D6375;}
+#pitch .pitch-propertyrow {background:#F5FAFC;border-color:#D5E6EC;}
+#pitch .pitch-property-badge {background:#D6F4ED;color:#0C6052;}
+#pitch .pitch-muted-badge {background:#EAF1F4;color:#38576A;}
+#pitch .pitch-footnote {color:#3A6374!important;}
+#pitch .pitch-label,#pitch .pitch-range,#pitch .pitch-config-right>small,
+#pitch .pitch-payment-row,#pitch .pitch-config-total,#pitch .pitch-concession {color:#345A6C;}
+#pitch .pitch-label strong,#pitch .pitch-config-total strong,
+#pitch .pitch-payment-row b,#pitch .pitch-concession strong {color:#0B6370;}
+#pitch .pitch-config input[type="range"] {accent-color:#0E8992;}
+#pitch .pitch-scheme {background:#EAF7F8;color:#0A5C6D;border-color:#ADD7DD;}
+#pitch .pitch-scheme.chosen {background:#0D6473;color:#FFFFFF;border-color:#0D6473;}
+#pitch .pitch-arch-box {background:#113D4A;border-color:#287E8A;color:#FFFFFF;}
+#pitch .pitch-arch-box span,#pitch .pitch-arch-box small {color:#D9F5F7;}
+#pitch .pitch-arch-box div {background:#0A2933;color:#D9F5F7;}
+#pitch .pitch-arch-main {background:linear-gradient(135deg,#106D76,#18A584);border-color:#53C8C0;}
+#pitch .pitch-arch-link {color:#D7F5EF;}
+#pitch .pitch-arch-link i {background:linear-gradient(90deg,transparent,#39D8C2,transparent);}
+#pitch .pitch-arch-note {color:#E1F5F4;}
+#pitch .pitch-stake span,#pitch .pitch-stake small {color:#086C7C;}
+#pitch .pitch-stake h3 {color:#102A43;}
+#pitch .pitch-stake p {color:#3C5F73;}
+#pitch .pitch-finalline {color:#3C5D70;}
+#pitch .pitch-finalline strong {color:#0C6577;}
+#pitch .pitch-closing-actions button {background:#D9F5F7;border-color:#B5E6E7;color:#0E4C61;}
+#pitch .pitch-closing-actions button+button {background:transparent;border-color:#D9F5F7;color:#FFFFFF;}
+#pitch .pitch-page {background:#BFD7DF;}
+#pitch .pitch-page.selected {background:#087D8C;}
+#pitch .pitch-page.past {background:#73AAB7;}
+#pitch .pitch-btns button {background:#E2F3F6;border-color:#BCDDE4;color:#104E65;}
+#pitch .pitch-btns button:hover {background:#D3EBF0;}
+@media(max-width:760px){
+ #pitch .pitch-scene[data-pitch-scene="0"] .pitch-display {font-size:clamp(38px,8vw,52px);letter-spacing:-2px;}
+ #pitch .pitch-scene .pitch-display,#pitch .pitch-scene .pitch-head {overflow-wrap:break-word;}
+}
+@media(prefers-reduced-motion:reduce){
+ #pitch .pitch-orb,#pitch .pitch-scrollhint span {animation:none!important;}
+}

@@ -1,0 +1,31 @@
+HONOR FLEX — MIDNIGHT NAVY + EMERALD AQUA THEME
+
+Updated: October 29, 2026
+
+Design: Midnight #081A1A / Navy #102A43 / Emerald #1FA971 / Aqua #2CB1BC / Mint #C9F2DE / White #FFFFFF.
+
+The changes are contained in the new honor-theme.css file and one additional
+<link> reference in index.html. Existing app features and pitch animations remain.
+
+IMPORTANT: The two ZIPs are DIFFERENT. Do not overwrite your working local
+Node.js server with files from the GitHub Pages version.
+
+GitHub Pages version:
+  - Back up your current site's index.html.
+  - If your current site is this same Honor Flex Pitch Experience build,
+    replace index.html and add honor-theme.css, retaining pitch.css (or pitch-v4.css)
+    and pitch.js.
+  - If your current index.html has newer edits, do NOT replace it: add
+    <link rel="stylesheet" href="honor-theme.css?v=navy-aqua-1">
+    immediately before </head> and copy honor-theme.css.
+  - Push to the GitHub Pages publishing branch and hard refresh.
+
+Local API version:
+  - Extract into its own folder.
+  - Run node server.js on Node 22.13+ and visit http://127.0.0.1:3000.
+  - Uses your local functional SQLite API. Do NOT publish the local server publicly.
+  - To theme an existing locally modified version, add honor-theme.css and
+    its stylesheet <link> only, instead of replacing index.html.
+
+The pitch continues to show fictional listings and an illustrative calculator.
+The pitch calculator does not publish real landlord policies.
